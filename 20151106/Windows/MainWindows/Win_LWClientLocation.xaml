@@ -49,9 +49,10 @@
 
                     <!-- Col 1, Row 0, Name -->
                     <TextBox Name="txtNameSrch" HorizontalContentAlignment="Center" 
-                           VerticalContentAlignment="Center" Grid.Column="1" Grid.Row="0" 
-                           Margin="2" Background="Cornsilk"  BorderBrush="White" 
-                           BorderThickness="1" FontWeight="Bold"></TextBox>
+                             VerticalContentAlignment="Center" Grid.Column="1" Grid.Row="0" 
+                             Margin="2" Background="Cornsilk"  BorderBrush="White" 
+                             BorderThickness="1" FontWeight="Bold" 
+                             TextChanged="txtNameSrch_TextChanged"></TextBox>
 
                     <!-- Col 2, Row 0, labelStatus -->
                     <Label Name="labelStatus" HorizontalContentAlignment="Center" 

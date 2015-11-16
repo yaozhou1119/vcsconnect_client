@@ -48,6 +48,13 @@ namespace VcsConnect_Client.Windows.MainWindows
             };
 
 
+            // LISTENER: ADD Enable
+            uc_ClientLocationDetail.OnClientLocation_ADDEnable += (o, e) =>
+                {
+                    labelStatus.Content = o.ToString();
+                };
+
+
             // Listening for ViewModel Property Change
             // --------------------------------
             // Loading the data grid MVVM style
@@ -80,6 +87,31 @@ namespace VcsConnect_Client.Windows.MainWindows
         private void menuExit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+
+        // select by Client Name change
+        private void txtNameSrch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            // client name
+            string clName = txtNameSrch.Text.Trim();
+
+            // display message
+            labelStatus.Content = "";
+
+            // turn ON busy Indicator
+            busy_Indicator.IsBusy = true;
+
+            // reset and initial button
+            //uc_ClientAssocTblDisplay.uc_ClientTabControlRef.uc_ClientDetail.Execute_InitialConfiguration();
+            //uc_ClientAssocTblDisplay.uc_ClientsLocationList.DataContext = null;
+            //uc_ClientAssocTblDisplay.uc_ClientTabControlRef.uc_InvList.DataContext = null;
+            //uc_ClientAssocTblDisplay.uc_ClientTabControlRef.uc_BidsList.DataContext = null;
+            //uc_ClientAssocTblDisplay.uc_ClientTabControlRef.uc_WOList.DataContext = null;
+            //uc_ClientAssocTblDisplay.uc_ClientTabControlRef.uc_ClientContactList.DataContext = null;
+
+            // get data based on search
+            clVM.Get_ClientLocations_LIKEName_Async(clName);
         }
     }
 }

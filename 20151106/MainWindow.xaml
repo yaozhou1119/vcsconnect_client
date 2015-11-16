@@ -48,7 +48,11 @@
                         <!-- Location Category -->
                         <MenuItem Name="menuLocCat" Header="Loc Cat" FontSize="12" 
                                   FontWeight="Regular" Click="menuLocCat_Click"></MenuItem>
-                        
+
+                        <!-- Location Type -->
+                        <MenuItem Name="menuLocType" Header="Loc Type" FontSize="12" 
+                                  FontWeight="Regular" Click="menuLocType_Click"></MenuItem>
+
                         <!-- lwdom_RatesID_Model: Rate Names -->
                         <MenuItem Name="menuRatesID" Header="Rate Names (RateID)" FontSize="12" 
                                   FontWeight="Regular" Click="menuRatesID_Click"></MenuItem>

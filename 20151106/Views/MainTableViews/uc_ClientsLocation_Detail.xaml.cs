@@ -12,6 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+// model
+using VcsConnect_Client.Models.SQL_Models;
+// worker
+using VcsConnect_Client.Workers.SQL_Workers;
 
 namespace VcsConnect_Client.Views.MainTableViews
 {
@@ -20,19 +24,41 @@ namespace VcsConnect_Client.Views.MainTableViews
     /// </summary>
     public partial class uc_ClientsLocation_Detail : UserControl
     {
+        // routed event handlers
+        public RoutedEventHandler OnClientLocation_ADDEnable;
+
+
         // constructor
         public uc_ClientsLocation_Detail()
         {
             InitializeComponent();
+
+            // load combo boxes
+            load_LocCat_CombBox();
+            load_JobType_CombBox();
+            load_LocType_CombBox();
 
             // reset and initialize buttons
             ResetDisplayFields();
             InitialButtonConfiguration();
         }
 
+
+        // ADD Enable: configure for ADD
         private void buttonADD_Enable_Copy_Click(object sender, RoutedEventArgs e)
         {
+            // Enable Add Button has been clicked, so release any data 
+            // context reference
+            DataContext = null;
 
+            // Create a new model object and bind 
+            // it to the dataContext
+            DataContext = new lw_ClientLocations_Model();
+
+            // Add Enable Event copying data
+            ADDButtonConfiguration();
+            sender = "Configured for ADD Enable copying data.";
+            if (OnClientLocation_ADDEnable != null) OnClientLocation_ADDEnable(sender, new RoutedEventArgs());
         }
 
         private void buttonADD_Enable_Blank_Click(object sender, RoutedEventArgs e)
@@ -147,13 +173,15 @@ namespace VcsConnect_Client.Views.MainTableViews
             txtClientName.Text = "";
             txtClientLocationID.Text = "";
             txtName.Text = "";
-            txtType.Text = "";
+            cboType.Text = "";
             txtLocAdd1.Text = "";
             txtLocAdd2.Text = "";
             txtLocTown.Text = "";
             txtLocState.Text = "";
             txtLocZip.Text = "";
             txtComment.Text = "";
+            //
+            cboLocType.Text = "";
             cboLocCat.Text = "";
         }
 
@@ -167,13 +195,16 @@ namespace VcsConnect_Client.Views.MainTableViews
             txtClientName.IsEnabled = false;
             txtClientLocationID.IsEnabled = false;
             txtName.IsEnabled = false;
-            txtType.IsEnabled = false;
+            cboType.IsEnabled = false;
             txtLocAdd1.IsEnabled = false;
             txtLocAdd2.IsEnabled = false;
             txtLocTown.IsEnabled = false;
             txtLocState.IsEnabled = false;
             txtLocZip.IsEnabled = false;
             txtComment.IsEnabled = false;
+            //
+            cboLocType.IsEnabled = false;
+            cboLocCat.IsEnabled = false;
         }
 
 
@@ -185,13 +216,52 @@ namespace VcsConnect_Client.Views.MainTableViews
             txtClientName.IsEnabled = true;
             txtClientLocationID.IsEnabled = true;
             txtName.IsEnabled = true;
-            txtType.IsEnabled = true;
+            cboType.IsEnabled = true;
             txtLocAdd1.IsEnabled = true;
             txtLocAdd2.IsEnabled = true;
             txtLocTown.IsEnabled = true;
             txtLocState.IsEnabled = true;
             txtLocZip.IsEnabled = true;
             txtComment.IsEnabled = true;
+            //
+            cboLocType.IsEnabled = true;
+            cboLocCat.IsEnabled = true;
+        }
+
+
+        // load the Location Category comb box
+        private void load_LocCat_CombBox()
+        {
+            lwdom_LocCat_Worker LCWkr = new lwdom_LocCat_Worker();
+            List<string> lcStr_List = LCWkr.Get_LocCatDesc_stringList();
+            
+            // load combo box items source
+            cboLocCat.ItemsSource = lcStr_List;
+        }
+
+
+        // load the Job Type comb box
+        private void load_JobType_CombBox()
+        {
+            // Job Type
+            lwdom_JobType_Worker JTWkr = new lwdom_JobType_Worker();
+            List<string> jtStr_List = JTWkr.Get_JobType_stringList();
+
+            // load combo box items source
+            cboType.ItemsSource = jtStr_List;
+        }
+
+
+
+        // load the lwdom_LocType comb box
+        private void load_LocType_CombBox()
+        {
+            // Location Type
+            lwdom_LocType_Worker LTWkr = new lwdom_LocType_Worker();
+            List<string> ltStr_List = LTWkr.Get_LocType_StringList();
+
+            // load combo box items source
+            cboLocType.ItemsSource = ltStr_List;
         }
     }
 }

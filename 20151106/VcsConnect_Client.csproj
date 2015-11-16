@@ -83,6 +83,7 @@
     <Compile Include="Models\SQL_Models\lwdom_chemlist_Model.cs" />
     <Compile Include="Models\SQL_Models\lwdom_JobType_Model.cs" />
     <Compile Include="Models\SQL_Models\lwdom_LocCat_Model.cs" />
+    <Compile Include="Models\SQL_Models\lwdom_LocType_Model.cs" />
     <Compile Include="Models\SQL_Models\lwdom_RatesID_Model.cs" />
     <Compile Include="Models\SQL_Models\lwdom_Rates_Model.cs" />
     <Compile Include="Models\SQL_Models\lwdom_StateName_Model.cs" />
@@ -227,6 +228,9 @@
     <Compile Include="Windows\SupporWindows\Win_DomLocCat.xaml.cs">
       <DependentUpon>Win_DomLocCat.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\SupporWindows\Win_DomLocType.xaml.cs">
+      <DependentUpon>Win_DomLocType.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\SupporWindows\Win_DomRatesID.xaml.cs">
       <DependentUpon>Win_DomRatesID.xaml</DependentUpon>
     </Compile>
@@ -246,6 +250,7 @@
     <Compile Include="Workers\SQL_Workers\lwdom_chemlist_Woker.cs" />
     <Compile Include="Workers\SQL_Workers\lwdom_JobType_Worker.cs" />
     <Compile Include="Workers\SQL_Workers\lwdom_LocCat_Worker.cs" />
+    <Compile Include="Workers\SQL_Workers\lwdom_LocType_Worker.cs" />
     <Compile Include="Workers\SQL_Workers\lwdom_RatesID_Worker.cs" />
     <Compile Include="Workers\SQL_Workers\lwdom_Rates_Worker.cs" />
     <Compile Include="Workers\SQL_Workers\lwdom_StateName_Worker.cs" />
@@ -428,6 +433,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\SupporWindows\Win_DomLocCat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\SupporWindows\Win_DomLocType.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

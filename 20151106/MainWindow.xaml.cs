@@ -207,5 +207,13 @@ namespace VcsConnect_Client
             Win_DomLocCat WinLC = new Win_DomLocCat();
             WinLC.ShowDialog();
         }
+
+
+        // Display the Location Type Window
+        private void menuLocType_Click(object sender, RoutedEventArgs e)
+        {
+            Win_DomLocType WinLT = new Win_DomLocType();
+            WinLT.ShowDialog();
+        }
     }
 }

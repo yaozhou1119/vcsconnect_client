@@ -99,6 +99,7 @@
                         <RowDefinition Height="37"/>
                         <RowDefinition Height="37"/>
                         <RowDefinition Height="37"/>
+                        <RowDefinition Height="37"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
@@ -140,11 +141,11 @@
                                  Grid.Column="1" Grid.Row="2" Margin="2"/>
 
                     <!-- row 2, Type, columns 3 to 4 -->
-                    <Label Content="Type" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="blue"
+                    <Label Content="Job Type" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="blue"
                                BorderThickness="1" Margin="2" Background="#F0F8FF" Grid.Column="3" Grid.Row="2"></Label>
-                    <TextBox Name="txtType" Text="{Binding Type, Mode=Default}" HorizontalContentAlignment="Center"
+                    <ComboBox Name="cboType" Text="{Binding Type, Mode=Default}" HorizontalContentAlignment="Center"
                                  VerticalContentAlignment="Center" BorderBrush="Blue" BorderThickness="1" Background="Cornsilk"
-                                 Grid.Column="4" Grid.Row="2" Margin="2"></TextBox>
+                                 Grid.Column="4" Grid.Row="2" Margin="2"></ComboBox>
 
 
                     <!-- row 3, LocAdd1, columns 0 to 1 -->
@@ -184,20 +185,28 @@
                                  VerticalContentAlignment="Center" BorderBrush="Blue" BorderThickness="1" Background="Cornsilk"
                                  Grid.Column="1" Grid.Row="5" Margin="2"></TextBox>
 
-                    <!-- row 5, LocCat, columns 3 to 4 -->
-                    <Label Content="LocCat" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="blue"
+                    <!-- row 5, LocType, columns 3 to 4 -->
+                    <Label Content="Loc Type" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="blue"
                                BorderThickness="1" Margin="2" Background="#F0F8FF" Grid.Column="3" Grid.Row="5"></Label>
-                    <TextBox Name="cboLocCat" Text="{Binding LocCat, Mode=Default}" HorizontalContentAlignment="Center"
+                    <ComboBox Name="cboLocType" Text="{Binding LocType, Mode=Default}" HorizontalContentAlignment="Center"
                                  VerticalContentAlignment="Center" BorderBrush="Blue" BorderThickness="1" Background="Cornsilk"
-                                 Grid.Column="4" Grid.Row="5" Margin="2"></TextBox>
+                                 Grid.Column="4" Grid.Row="5" Margin="2"></ComboBox>
 
-
-                    <!-- row 6, Comment, columns 0 to 1 to span -->
-                    <Label Content="Comment" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="blue"
+                    
+                    <!-- row 6, LocCat, columns 3 to 4 -->
+                    <Label Content="Loc Cat" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="blue"
                                BorderThickness="1" Margin="2" Background="#F0F8FF" Grid.Column="0" Grid.Row="6"></Label>
+                    <ComboBox Name="cboLocCat" Text="{Binding LocCat, Mode=Default}" HorizontalContentAlignment="Center"
+                                 VerticalContentAlignment="Center" BorderBrush="Blue" BorderThickness="1" Background="Cornsilk"
+                                 Grid.Column="1" Grid.Row="6" Margin="2"></ComboBox>
+
+
+                    <!-- row 7, Comment, columns 0 to 1 to span -->
+                    <Label Content="Comment" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="blue"
+                               BorderThickness="1" Margin="2" Background="#F0F8FF" Grid.Column="0" Grid.Row="7"></Label>
                     <TextBox Name="txtComment" Text="{Binding Comment}" HorizontalContentAlignment="Center"
                              VerticalContentAlignment="Center" BorderBrush="Blue" BorderThickness="1" Background="Cornsilk"
-                             Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="7" Margin="2" TextWrapping="Wrap"
+                             Grid.Column="1" Grid.Row="7" Grid.ColumnSpan="7" Margin="2" TextWrapping="Wrap"
                              ScrollViewer.HorizontalScrollBarVisibility="Auto" 
                              ScrollViewer.VerticalScrollBarVisibility="Auto"></TextBox>
                 </Grid>

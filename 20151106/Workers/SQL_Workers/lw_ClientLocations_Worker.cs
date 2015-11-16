@@ -525,7 +525,7 @@ namespace VcsConnect_Client.Workers.SQL_Workers
             string sqlStatement = "SELECT ID, AccNum, ClientLocationID, Name, Type, LocAdd1, LocAdd2, " +
                 "LocTown, LocState, LocZip, UpdateDate, Comment, LocType, LocCat, ClientName " +
                 "FROM lw_ClientLocations " +
-                "WHERE Name=@Name " +
+                "WHERE Name LIKE @Name " + 
                 "ORDER BY Name";
 
             // create List
@@ -539,7 +539,7 @@ namespace VcsConnect_Client.Workers.SQL_Workers
                 SqlCommand command = new SqlCommand(sqlStatement, connection);
 
                 // insert Command
-                command.Parameters.AddWithValue("@Name", strName);
+                command.Parameters.AddWithValue("@Name", strName + '%');
 
                 SqlDataReader reader = command.ExecuteReader();
 
