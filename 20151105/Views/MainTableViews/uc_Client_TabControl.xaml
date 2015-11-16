@@ -1,0 +1,109 @@
+﻿<UserControl x:Class="VcsConnect_Client.Views.MainTableViews.uc_Client_TabControl"
+             xmlns:View="clr-namespace:VcsConnect_Client.Views.MainTableViews"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+            mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <TabControl HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+		    Height="auto"
+		    Margin="1"
+		    Width="auto"
+		    SelectionChanged="TabControl_SelectionChanged">
+
+            <!-- Client Information -->
+            <TabItem Header="Client Info">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <!-- Row 0 -->
+                    <!-- Border & Equipment DataGrid definition -->
+                    <Border Margin="2" Grid.Column="0" Grid.Row="0">
+                        <View:uc_Clients_Detail x:Name="uc_ClientDetail"/>
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <!-- Contacts -->
+            <TabItem Header="Contacts">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <!-- Row 0 -->
+                    <!-- Border & Client Contacts List -->
+                    <Border Margin="2" Grid.Column="0" Grid.Row="0">
+                        <View:uc_ClientContact_List x:Name="uc_ClientContactList"/>
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <!-- Bids -->
+            <TabItem Header="Bids">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <!-- Row 0 -->
+                    <!-- Border & Bid List -->
+                    <Border Margin="2" Grid.Column="0" Grid.Row="0">
+                        <View:uc_Bids_List x:Name="uc_BidsList"/>
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <!-- Work Order -->
+            <TabItem Header="Work Orders">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <!-- Row 0 -->
+                    <!-- Border & Work Order List -->
+                    <Border Margin="2" Grid.Column="0" Grid.Row="0">
+                        <View:uc_WorkOrders_List x:Name="uc_WOList"/>
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <!-- Invoices -->
+            <TabItem Header="Invoices">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <!-- Row 0 -->
+                    <!-- Border & Invoice List -->
+                    <Border Margin="2" Grid.Column="0" Grid.Row="0">
+                        <View:uc_Invoice_List x:Name="uc_InvList"/>
+                    </Border>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+
+</UserControl>

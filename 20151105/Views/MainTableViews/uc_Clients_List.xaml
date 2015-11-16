@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="VcsConnect_Client.Views.MainTableViews.uc_Clients_List"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+
+        <DockPanel LastChildFill="True">
+
+            <!-- Border and selection for Invoice -->
+            <Border DockPanel.Dock="Top" Margin="10,2,10,9">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- row 0,  UserLogInID & OwnerID -->
+                    <Label Name="LabelBanner" Content="Client Listing" HorizontalContentAlignment="Center"
+                           VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="0" BorderBrush="White"
+                           BorderThickness="1" Foreground="Black" Background="LightGray" FontWeight="Bold"></Label>
+                </Grid>
+                <Border.Effect>
+                    <DropShadowEffect Opacity=".5" BlurRadius="5" ShadowDepth="3"></DropShadowEffect>
+                </Border.Effect>
+            </Border>
+
+            <!-- list -->
+            <!-- Marging Padding order: left, right, top, bottom -->
+            <Border DockPanel.Dock="Top" Margin="10,2,10,9">
+                <Grid>
+                    <DataGrid Name="Client_DataGrid" ItemsSource="{Binding}" SelectionChanged="Client_DataGrid_SelectionChanged"
+                      AutoGenerateColumns="false"  VirtualizingStackPanel.IsVirtualizing="True"
+                          VirtualizingStackPanel.VirtualizationMode="Standard" EnableRowVirtualization="True"
+                              EnableColumnVirtualization="False"
+                              IsReadOnly="True">
+                        <DataGrid.ColumnHeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="Background" Value="#CAE1FF"></Setter>
+                                <Setter Property="BorderBrush" Value="DarkGray"></Setter>
+                                <Setter Property="BorderThickness" Value="1"></Setter>
+                                <Setter Property="Margin" Value="1"></Setter>
+                            </Style>
+                        </DataGrid.ColumnHeaderStyle>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding ID}" Header="ID" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{Binding AccNum}" Header="Account Number" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{Binding Name}" Header="Client Name" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{Binding ActiveStatus}" Header="Active Status" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{Binding Note}" Header="Notes" ClipboardContentBinding="{x:Null}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </Border>
+        </DockPanel>
+    </Grid>
+</UserControl>
