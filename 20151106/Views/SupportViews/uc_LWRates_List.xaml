@@ -1,0 +1,72 @@
+﻿<UserControl x:Class="VcsConnect_Client.Views.SupportViews.uc_LWRates_List"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+
+        <DockPanel LastChildFill="True">
+
+            <!-- Border and selection for Invoice -->
+            <Border DockPanel.Dock="Top" Margin="10,2,10,9">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70"></ColumnDefinition>
+                        <ColumnDefinition Width="90"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- row 0,  Label Rate Year -->
+                    <Label Name="LabelRateYear" Content="Rate Year" HorizontalContentAlignment="Center"
+                           Margin="1" VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="0" 
+                           BorderBrush="DarkBlue" BorderThickness="1" Foreground="Black" 
+                           Background="LightGray" FontWeight="Bold"></Label>
+
+                    <!-- row 0,  Rate Year Combo Box -->
+                    <ComboBox Name="cboRateYear" HorizontalContentAlignment="Center" Margin="1"
+                              VerticalContentAlignment="Center" Grid.Column="1" Grid.Row="0"
+                              BorderBrush="DarkBlue" BorderThickness="1" Foreground="Black"
+                              Background="LightGray" FontWeight="Bold"
+                              SelectionChanged="cboRateYear_SelectionChanged"></ComboBox>
+
+                    <!-- row 0, Banner -->
+                    <Label Name="LabelBanner" Content="Rates" HorizontalContentAlignment="Center"
+                           Margin="1" VerticalContentAlignment="Center" Grid.Column="2" Grid.Row="0"
+                           BorderBrush="DarkBlue" BorderThickness="1" Foreground="Black"
+                           Background="LightGray" FontWeight="Bold"></Label>
+                </Grid>
+                <Border.Effect>
+                    <DropShadowEffect Opacity=".5" BlurRadius="5" ShadowDepth="3"></DropShadowEffect>
+                </Border.Effect>
+            </Border>
+
+            <!-- list -->
+            <!-- Marging Padding order: left, right, top, bottom -->
+            <Border DockPanel.Dock="Top" Margin="10,2,10,9">
+                <Grid>
+                    <DataGrid Name="Rates_DataGrid" ItemsSource="{Binding}" SelectionChanged="Rates_DataGrid_SelectionChanged"
+                      AutoGenerateColumns="false"  VirtualizingStackPanel.IsVirtualizing="True"
+                          VirtualizingStackPanel.VirtualizationMode="Standard" EnableRowVirtualization="True"
+                              EnableColumnVirtualization="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding ID}" Header="ID" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{Binding RateID}" Header="Rate ID" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{Binding Category}" Header="Category" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{Binding Code}" Header="Code" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{Binding RateYear}" Header="RateYear" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{Binding Description}" Header="Description" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{Binding RetailRate, StringFormat='#,#0.00'}" Header="Retail Rate" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{Binding CostRate, StringFormat='#,#0.00'}" Header="Cost" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{Binding ActiveStatus}" Header="ActiveStatus" ClipboardContentBinding="{x:Null}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </Border>
+        </DockPanel>
+    </Grid>
+</UserControl>

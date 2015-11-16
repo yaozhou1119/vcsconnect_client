@@ -1,0 +1,148 @@
+﻿<UserControl x:Class="VcsConnect_Client.Views.MainTableViews.uc_Clients_Detail"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="400"
+             Background="#FFE5E5E5">
+    <Grid>
+        <DockPanel LastChildFill="True">
+
+
+            <!-- ADD Enable Button -->
+            <Border DockPanel.Dock="Top" Margin="10,2,10,5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Button Name="buttonADD_Enable_Copy" Content="CLIENT (add record) - Copy" Margin="2" BorderBrush="Orange"
+                            BorderThickness="2" HorizontalAlignment="Stretch" Grid.Column="0" Grid.Row="0"
+                            Background="DarkBlue" Foreground="Wheat" FontWeight="Bold"
+                            Click="buttonADD_Enable_Copy_Click"></Button>
+
+                    <Button Name="buttonADD_Enable_Blank" Content="CLIENT (add record) - Blank" Margin="2" BorderBrush="Orange"
+                            BorderThickness="2" HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="0"
+                            Background="DarkBlue" Foreground="Wheat" FontWeight="Bold"
+                            Click="buttonADD_Enable_Blank_Click"></Button>
+                </Grid>
+                <Border.Effect>
+                    <DropShadowEffect Opacity=".5" BlurRadius="5" ShadowDepth="3"></DropShadowEffect>
+                </Border.Effect>
+            </Border>
+
+
+            <!-- Border and Menu -->
+            <Border DockPanel.Dock="Bottom" Margin="2">
+                <!-- Menu definitions -->
+
+                <!-- Border and selection for specific truck -->
+                <Border Grid.Row="1" Margin="10,1,10,9">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+
+                        <Button Name="buttonADD" Content="ADD" Margin="2" BorderBrush="Orange" BorderThickness="2"
+                                Grid.Column="0" Grid.Row="0" HorizontalAlignment="Stretch" Background="DarkBlue" 
+                                Foreground="Wheat" FontWeight="Bold" Click="buttonADD_Click"/>
+
+                        <Button Name="buttonUpdate" Content="Update" Margin="2" BorderBrush="Orange" BorderThickness="2"
+                                Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" Background="DarkBlue"
+                                Foreground="Wheat" FontWeight="Bold" Click="buttonUpdate_Click"/>
+
+                        <Button Name="buttonCancel"  Content="Cancel" Margin="2" BorderBrush="Orange" BorderThickness="2"
+                                Grid.Column="2" Grid.Row="0" HorizontalAlignment="Stretch" Background="DarkBlue" 
+                                Foreground="Wheat" FontWeight="Bold" Click="buttonCancel_Click"/>
+
+                        <Button Name="buttonDELETE"  Content="DELETE" Margin="2" BorderBrush="Orange" BorderThickness="2"
+                                Grid.Column="3" Grid.Row="0" HorizontalAlignment="Stretch" Background="DarkBlue" 
+                                Foreground="Orange" FontWeight="Bold" Click="buttonDELETE_Click"/>
+                    </Grid>
+
+                    <!-- Boder Effect -->
+                    <Border.Effect>
+                        <DropShadowEffect Opacity=".5" BlurRadius="5" ShadowDepth="3"></DropShadowEffect>
+                    </Border.Effect>
+                </Border>
+            </Border>
+
+
+            <!-- Border and selection for specific truck -->
+            <Border DockPanel.Dock="Top" Margin="4,4,4,1">
+                <Grid Name="Equip_Grid">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- row 0, ID, columns 0 to 1 -->
+                    <Label Content="ID" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="blue"
+                               BorderThickness="1" Margin="2" Background="#F0F8FF" Grid.Column="0" Grid.Row="0"></Label>
+                    <Label Name="lblID" Content="{Binding ID, Mode=TwoWay}" HorizontalContentAlignment="Center"
+                                 VerticalContentAlignment="Center" BorderBrush="Blue" BorderThickness="1" Background="#F0F8FF"
+                                 Grid.Column="1" Grid.Row="0" Margin="2"/>
+
+                    <!-- row 1, AccNum, columns 0 to 1 -->
+                    <Label Content="Acct Num" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="blue"
+                               BorderThickness="1" Margin="2" Background="#F0F8FF" Grid.Column="0" Grid.Row="1"></Label>
+                    <Label Name="lblAccNum" Content="{Binding AccNum, Mode=TwoWay}" HorizontalContentAlignment="Center"
+                                 VerticalContentAlignment="Center" BorderBrush="Blue" BorderThickness="1" Background="#F0F8FF"
+                                 Grid.Column="1" Grid.Row="1" Margin="2"/>
+
+                    <!-- row 2, Category, columns 0 to 1 -->
+                    <Label Content="Client Name" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="blue"
+                               BorderThickness="1" Margin="2" Background="#F0F8FF" Grid.Column="0" Grid.Row="2"></Label>
+                    <TextBox Name="txtName" Text="{Binding Name, Mode=Default}" HorizontalContentAlignment="Center"
+                                 VerticalContentAlignment="Center" BorderBrush="Blue" BorderThickness="1" Background="Cornsilk"
+                                 Grid.Column="1" Grid.Row="2" Margin="2"/>
+
+                    <!-- row 3, Category, columns 0 to 1 -->
+                    <Label Content="Client Status" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="blue"
+                               BorderThickness="1" Margin="2" Background="#F0F8FF" Grid.Column="0" Grid.Row="3"></Label>
+                    <ComboBox Name="cboActiveStatus" Text="{Binding ActiveStatus}" HorizontalContentAlignment="Center"
+                                 VerticalContentAlignment="Center" BorderBrush="Blue" BorderThickness="1" Background="Cornsilk"
+                                 Grid.Column="1" Grid.Row="3" Margin="2">
+                        <ComboBoxItem Content="active"></ComboBoxItem>
+                        <ComboBoxItem Content="inactive"></ComboBoxItem>
+                    </ComboBox>
+
+                    <!-- row 4, description, columns 0 to 1 -->
+                    <Label Content="Location Note" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="blue"
+                               BorderThickness="1" Margin="2" Background="#F0F8FF" Grid.Column="0" Grid.Row="4"></Label>
+                    <TextBox Name="txtNote" Text="{Binding Note, Mode=Default}" HorizontalContentAlignment="Center"
+                                 VerticalContentAlignment="Center" BorderBrush="Blue" BorderThickness="1" Background="Cornsilk"
+                                 Grid.Column="1" Grid.Row="4" Margin="2"/>
+
+                    <!-- row 5, Comments, columns 0 to 1 -->
+                    <Label Content="Gen. Comments" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="blue"
+                               BorderThickness="1" Margin="2" Background="#F0F8FF" Grid.Column="0" Grid.Row="5"></Label>
+                    <TextBox Name="txtComments" Text="{Binding Comments, Mode=Default}" HorizontalContentAlignment="Center"
+                                 VerticalContentAlignment="Center" BorderBrush="Blue" BorderThickness="1" Background="Cornsilk"
+                                 Grid.Column="1" Grid.Row="5" Margin="2"/>
+                </Grid>
+            </Border>
+        </DockPanel>
+        <xctk:BusyIndicator x:Name="busyIndicator" VerticalAlignment="Center" HorizontalAlignment="Center" />
+    </Grid>
+</UserControl>

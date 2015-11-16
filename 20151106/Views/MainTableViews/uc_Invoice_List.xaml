@@ -1,0 +1,108 @@
+﻿<UserControl x:Class="VcsConnect_Client.Views.MainTableViews.uc_Invoice_List"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+
+        <DockPanel LastChildFill="True">
+
+            <!-- Border and selection for Invoice -->
+            <Border DockPanel.Dock="Top" Margin="10,2,10,9">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="175"></ColumnDefinition>
+                        <ColumnDefinition Width="5"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- row 0,  UserLogInID & OwnerID -->
+                    <DatePicker Name="dtpSelectInvoiceDate" HorizontalContentAlignment="Center"
+                                VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="0" 
+                                BorderBrush="White" BorderThickness="1" Foreground="Black"
+                                Background="LightGray" FontWeight="Bold"
+                                SelectedDateChanged="dtpSelectInvoiceDate_SelectedDateChanged"></DatePicker>
+
+                    <!-- row 2,  UserLogInID & OwnerID -->
+                    <Label Name="LabelBanner" Content="Invoice Listing" HorizontalContentAlignment="Center"
+                           VerticalContentAlignment="Center" Grid.Column="2" Grid.Row="0" BorderBrush="White"
+                           BorderThickness="1" Foreground="Black" Background="LightGray" FontWeight="Bold"></Label>
+                </Grid>
+                <Border.Effect>
+                    <DropShadowEffect Opacity=".5" BlurRadius="5" ShadowDepth="3"></DropShadowEffect>
+                </Border.Effect>
+            </Border>
+
+            <!-- list -->
+            <!-- Marging Padding order: left, right, top, bottom -->
+            <Border DockPanel.Dock="Top" Margin="10,2,10,9">
+                <Grid>
+                    <DataGrid Name="Invoice_DataGrid" ItemsSource="{Binding}" SelectionChanged="Invoice_DataGrid_SelectionChanged"
+                      AutoGenerateColumns="false"  VirtualizingStackPanel.IsVirtualizing="True"
+                          VirtualizingStackPanel.VirtualizationMode="Standard" EnableRowVirtualization="True"
+                              EnableColumnVirtualization="False"
+                              VerticalScrollBarVisibility="Auto"
+                              HorizontalScrollBarVisibility="Auto"
+                              IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding ID}" Header="ID" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{Binding WorkOrderID}" Header="WorkOrder ID" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{Binding InvoiceID}" Header="Invoice ID" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{Binding Description}" Header="Description" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{Binding ContactID}" Header="Contact ID" ClipboardContentBinding="{x:Null}"/>
+
+                            <!-- format date to center of column -->
+                            <DataGridTextColumn Binding="{Binding WorkFrom, StringFormat=d}" Header="Work From" ClipboardContentBinding="{x:Null}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            
+                            <DataGridTextColumn Binding="{Binding WorkTo, StringFormat=d}" Header="Work To" ClipboardContentBinding="{x:Null}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn Binding="{Binding InvoiceDate, StringFormat=d}" Header="Invoice Date" ClipboardContentBinding="{x:Null}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn Binding="{Binding Paid}" Header="Paid" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{Binding EquipHour}" Header="Equip Hour" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{Binding WorkerHour}" Header="Worker Hour" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{Binding ChemHour}" Header="Chem Hour" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{Binding TaxAmt}" Header="Tax Amt" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{Binding BillLocation}" Header="Bill Location" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{Binding LocID}" Header="LocID" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{Binding InvID}" Header="InvID" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{Binding invMemo}" Header="inv Memo" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{Binding LocWrkID}" Header="LocWrk ID" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{Binding showBillName}" Header="show Bill Name" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{Binding totEquip, StringFormat='{}{0:c}'}" Header="Tot Equip" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{Binding totWork, StringFormat='{}{0:c}'}" Header="Tot Work" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{Binding totChem, StringFormat='{}{0:c}'}" Header="Tot Chem" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{Binding totItem, StringFormat='{}{0:c}'}" Header="Tot Item" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{Binding totBeforeTax, StringFormat='{}{0:c}'}" Header="Tot Before Tax" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{Binding totInvoicedBeforTax, StringFormat='{}{0:c}'}" Header="Tot Invoiced Befor Tax" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{Binding AccNum}" Header="Acc Num" ClipboardContentBinding="{x:Null}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </Border>
+        </DockPanel>
+    </Grid>
+</UserControl>

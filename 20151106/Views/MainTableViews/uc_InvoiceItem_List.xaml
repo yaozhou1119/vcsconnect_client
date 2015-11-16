@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="VcsConnect_Client.Views.MainTableViews.uc_InvoiceItem_List"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+
+        <DockPanel LastChildFill="True">
+
+            <!-- Border and selection for Invoice -->
+            <Border DockPanel.Dock="Top" Margin="10,2,10,9">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- row 0,  Banner -->
+                    <Label Name="LabelBanner" Content="Invoice Item Listing" 
+                           HorizontalContentAlignment="Center" Margin="1"
+                           VerticalContentAlignment="Center" BorderBrush="White"
+                           Grid.Column="0" Grid.Row="0" BorderThickness="1" 
+                           Foreground="Black" Background="LightGray" FontWeight="Bold"></Label>
+                </Grid>
+                <Border.Effect>
+                    <DropShadowEffect Opacity=".5" BlurRadius="5" ShadowDepth="3"></DropShadowEffect>
+                </Border.Effect>
+            </Border>
+
+            <!-- list -->
+            <!-- Marging Padding order: left, right, top, bottom -->
+            <Border DockPanel.Dock="Top" Margin="10,2,10,9">
+                <Grid>
+                    <DataGrid Name="InvoiceItem_DataGrid" ItemsSource="{Binding}" SelectionChanged="InvoiceItem_DataGrid_SelectionChanged"
+                              MouseDoubleClick="InvoiceItem_DataGrid_MouseDoubleClick"
+                              AutoGenerateColumns="false"  VirtualizingStackPanel.IsVirtualizing="True"
+                              VirtualizingStackPanel.VirtualizationMode="Standard" EnableRowVirtualization="True"
+                              EnableColumnVirtualization="False"
+                              VerticalScrollBarVisibility="Auto"
+                              HorizontalScrollBarVisibility="Auto"
+                              IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding ID}" Header="ID" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{Binding InvItemId}" Header="Inv Item Id" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{Binding InvoiceID}" Header="Invoice ID" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{Binding Description}" Header="Description" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{Binding Cost, StringFormat='{}{0:c}'}" Header="Cost" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{Binding InvID}" Header="InvID" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Binding="{Binding istax}" Header="Is Tax" ClipboardContentBinding="{x:Null}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </Border>
+        </DockPanel>
+    </Grid>
+</UserControl>
